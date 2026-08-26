@@ -1,4 +1,3 @@
-import { env } from "cloudflare:workers";
 import { siteConfig } from "@/lib/site-config";
 
 type InquiryPayload = Record<string, unknown>;
@@ -31,14 +30,6 @@ export async function POST(request: Request) {
       }),
     });
     if (!forwarded.ok) return Response.json({ error: "We could not email your request right now. Please try again." }, { status: 502 });
-    try { if (env.DB) await env.DB.prepare(`INSERT INTO inquiries (
-      full_name, company, job_title, email, phone, country, project_type, challenge,
-      existing_tools, timeline, budget, additional_info, privacy_consent, status
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 'new')`).bind(
-      value(payload,"fullName"), value(payload,"company"), value(payload,"jobTitle"), email,
-      value(payload,"phone"), value(payload,"country"), value(payload,"projectType"), value(payload,"challenge"),
-      value(payload,"existingTools"), value(payload,"timeline"), value(payload,"budget") || "To be discussed", value(payload,"additionalInfo")
-    ).run(); } catch { /* Email delivery already succeeded; local archival is best effort. */ }
     return Response.json({ received: true }, { status: 201 });
   } catch {
     return Response.json({ error: "We could not send your request right now. Please try again." }, { status: 500 });
