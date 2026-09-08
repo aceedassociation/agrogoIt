@@ -18,6 +18,7 @@ export async function POST(request: Request) {
     const email = value(payload, "email");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return Response.json({ error: "Please enter a valid business email." }, { status: 400 });
     if (payload.privacyConsent !== "true" && payload.privacyConsent !== true) return Response.json({ error: "Privacy consent is required." }, { status: 400 });
+    if (payload.termsAcceptance !== "true" && payload.termsAcceptance !== true) return Response.json({ error: "Terms acceptance is required." }, { status: 400 });
     const forwarded = await fetch(siteConfig.formEndpoint, {
       method: "POST",
       headers: { "accept": "application/json", "content-type": "application/json" },
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
         email, phone: value(payload,"phone"), country: value(payload,"country"), projectType: value(payload,"projectType"),
         challenge: value(payload,"challenge"), existingTools: value(payload,"existingTools"), timeline: value(payload,"timeline"),
         budget: value(payload,"budget") || "To be discussed", additionalInfo: value(payload,"additionalInfo"),
-        privacyConsent: "Yes", _subject: `New Agrogo IT Services inquiry — ${value(payload,"projectType")}`,
+        privacyConsent: "Yes", termsAcceptance: "Yes", _subject: `New Agrogo IT Services inquiry — ${value(payload,"projectType")}`,
       }),
     });
     if (!forwarded.ok) return Response.json({ error: "We could not email your request right now. Please try again." }, { status: 502 });

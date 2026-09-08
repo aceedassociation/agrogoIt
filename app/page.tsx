@@ -12,11 +12,14 @@ import {
   Network,
   PanelsTopLeft,
   Route,
+  ShieldCheck,
   Smartphone,
+  Target,
   UsersRound,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DemoScreen } from "@/components/demo-screen";
+import { LocaleText } from "@/components/language-provider";
 
 const problems = [
   { icon: FileStack, title: "Manual and repetitive operations", text: "Critical work depends on repeated data entry, paper forms and individual follow-up." },
@@ -62,6 +65,12 @@ const packagePreview = [
   { title:"Support Retainer", for:"Clients after launch", problem:"Continuity, updates and user support", deliverable:"Monitoring, maintenance and improvements" },
 ];
 
+const consultingHighlights = [
+  { icon: ClipboardCheck, title: "Digital & IT diagnostic", text: "See the real operating model, systems, workflows and friction points before choosing technology." },
+  { icon: ShieldCheck, title: "COBIT-aligned governance review", text: "Assess decision rights, controls, risk ownership and capability maturity in the areas that matter." },
+  { icon: Target, title: "Gap-to-roadmap advisory", text: "Turn the gap between today’s operation and the target model into prioritised initiatives and accountable actions." },
+];
+
 const demoPreview = [
   { type:"workflow" as const, title:"Internal workflow and approvals", purpose:"Traceable requests and multi-level validation." },
   { type:"portal" as const, title:"Customer and user portal", purpose:"Secure self-service, documents and status." },
@@ -70,44 +79,22 @@ const demoPreview = [
   { type:"dashboard" as const, title:"Management dashboard", purpose:"KPIs, filters, alerts and exports." },
 ];
 
-function EcosystemVisual() {
+function HeroVisual() {
   return (
-    <div className="ecosystem" aria-label="Connected digital system showing workflow, dashboard, mobile app and ERP">
-      <div className="ecosystem-topline">
-        <span className="status-dot" /> ILLUSTRATIVE SYSTEM VIEW
-        <span className="ecosystem-meta">Connected workflow concept</span>
+    <div className="hero-visual" aria-label="Consulting and digital transformation visual">
+      <div className="hero-photo" role="img" aria-label="Business team planning a digital transformation" />
+      <div className="hero-visual-label">
+        <span className="status-dot" /> DIGITAL TRANSFORMATION
+        <span>Strategy · Governance · Delivery</span>
       </div>
-      <div className="ecosystem-grid">
-        <div className="eco-card eco-workflow">
-          <div className="eco-label"><Route size={15} /> Approval workflow</div>
-          <div className="workflow-row"><span>Request submitted</span><b>09:42</b></div>
-          <div className="workflow-track"><i /><i /><i /></div>
-          <div className="workflow-row"><span>Operations review</span><strong>In progress</strong></div>
-        </div>
-        <div className="eco-card eco-dashboard">
-          <div className="eco-label"><LayoutDashboard size={15} /> Management view</div>
-          <div className="metric-row">
-            <div><span>Open</span><b>24</b></div><div><span>On time</span><b>91%</b></div><div><span>Alerts</span><b>3</b></div>
-          </div>
-          <div className="mini-chart" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
-        </div>
-        <div className="eco-card eco-erp">
-          <div className="eco-label"><Database size={15} /> ERP / CRM</div>
-          <div className="erp-line"><span>Quotation</span><strong>Validated</strong></div>
-          <div className="erp-line"><span>Invoice</span><strong>Ready</strong></div>
-          <div className="erp-line"><span>Stock</span><strong>Synced</strong></div>
-        </div>
-        <div className="eco-phone">
-          <span className="phone-speaker" />
-          <div className="phone-head"><Smartphone size={13} /> Field app</div>
-          <div className="phone-task"><Check size={12} /> Site visit</div>
-          <div className="phone-task"><Check size={12} /> Form sent</div>
-          <div className="phone-action">Submit report</div>
+      <div className="hero-insight-card">
+        <div className="hero-insight-top"><span>Transformation focus</span><strong>Q1–Q4</strong></div>
+        <div className="hero-insight-title"><ChartNoAxesCombined size={16} /> Operating gap view</div>
+        <div className="hero-gap-bars">
+          <div><span>Process</span><i><b /></i></div><div><span>Data</span><i><b /></i></div><div><span>Governance</span><i><b /></i></div>
         </div>
       </div>
-      <div className="ecosystem-flow" aria-hidden="true">
-        <span>Business data</span><i /><i /><i /><span>Actionable insight</span>
-      </div>
+      <div className="hero-orbit hero-orbit-one" aria-hidden="true" /><div className="hero-orbit hero-orbit-two" aria-hidden="true" />
     </div>
   );
 }
@@ -117,16 +104,16 @@ export default function Home() {
     <main id="main-content">
       <section className="hero section-shell">
         <div className="hero-copy">
-          <div className="eyebrow"><span /> Digital Transformation & Software Solutions</div>
-          <h1>Turn fragmented work into <em>useful digital systems.</em></h1>
-          <p className="hero-lead">Agrogo combines consulting, project management and software delivery to build web, mobile and management systems that work in real operations.</p>
+          <div className="eyebrow"><span /> <LocaleText id="hero.eyebrow">Digital Transformation & Software Solutions</LocaleText></div>
+          <h1><LocaleText id="hero.title.1">Turn fragmented work into</LocaleText> <em><LocaleText id="hero.title.2">useful digital systems.</LocaleText></em></h1>
+          <p className="hero-lead"><LocaleText id="hero.lead">Agrogo combines consulting, project management and software delivery to build web, mobile and management systems that work in real operations.</LocaleText></p>
           <div className="button-row">
-            <Button asChild size="lg" className="button-primary"><Link href="/contact?project=diagnostic" data-analytics-event="book_diagnostic">Book a Digital Diagnostic <ArrowRight /></Link></Button>
-            <Button asChild size="lg" variant="outline" className="button-secondary"><Link href="/solutions">Explore Our Solutions</Link></Button>
+            <Button asChild size="lg" className="button-primary"><Link href="/contact?project=diagnostic" data-analytics-event="book_diagnostic"><LocaleText id="cta.diagnostic">Book a Digital Diagnostic</LocaleText> <ArrowRight /></Link></Button>
+            <Button asChild size="lg" variant="outline" className="button-secondary"><Link href="/solutions"><LocaleText id="cta.exploreSolutions">Explore Our Solutions</LocaleText></Link></Button>
           </div>
-          <div className="capability-line" aria-label="Capabilities"><span>Consulting</span><i /> <span>Project Management</span><i /> <span>Software Delivery</span><i /> <span>Training</span><i /> <span>Support</span></div>
+          <div className="capability-line" aria-label="Capabilities"><LocaleText id="hero.capabilities">Consulting · Project Management · Software Delivery · Training · Support</LocaleText></div>
         </div>
-        <EcosystemVisual />
+        <HeroVisual />
       </section>
 
       <section className="problem-band section-pad">
@@ -141,8 +128,15 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="consulting-home-section section-pad" id="consulting">
+        <div className="section-shell consulting-home-grid">
+          <div className="consulting-home-copy"><div className="eyebrow light"><span /> <LocaleText id="home.consulting.label">Consulting</LocaleText></div><h2><LocaleText id="home.consulting.title">Start with the operating gap—not the tool.</LocaleText></h2><p><LocaleText id="home.consulting.text">We audit how the business works today, assess its governance and digital capability, then design the most credible path toward the operating model it wants to reach.</LocaleText></p><div className="consulting-home-metric"><span>0–5</span><div><strong>Capability maturity view</strong><small>Process · Data · Systems · Governance</small></div></div><Button asChild size="lg" className="button-white"><Link href="/consulting"><LocaleText id="home.consulting.action">Explore IT Consulting</LocaleText> <ArrowRight /></Link></Button></div>
+          <div className="consulting-highlight-list">{consultingHighlights.map(({ icon: Icon, title, text }, index) => <article key={title}><span>0{index + 1}</span><Icon /><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+        </div>
+      </section>
+
       <section className="section-shell section-pad" id="solutions">
-        <div className="section-heading"><div className="eyebrow"><span /> Solutions</div><h2>What We Build</h2><p>Practical systems shaped around the workflow, users and decisions that matter to your organization.</p></div>
+        <div className="section-heading"><div className="eyebrow"><span /> <LocaleText id="home.solutions.label">Solutions</LocaleText></div><h2><LocaleText id="home.solutions.title">What We Build</LocaleText></h2><p><LocaleText id="home.solutions.text">Practical systems shaped around the workflow, users and decisions that matter to your organization.</LocaleText></p></div>
         <div className="solutions-grid">
           {solutions.map(({ icon: Icon, title, text }) => <article className="solution-card" key={title}><div className="icon-box"><Icon /></div><h3>{title}</h3><p>{text}</p><Link href="/solutions">Learn More <ArrowRight /></Link></article>)}
         </div>

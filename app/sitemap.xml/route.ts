@@ -1,2 +1,2 @@
-const routes=["","/solutions","/service-packages","/methodology","/demonstrators","/about","/contact","/privacy","/terms"];
+const routes=["","/consulting","/solutions","/service-packages","/methodology","/demonstrators","/about","/contact","/privacy","/terms"];
 export function GET(request:Request){const origin=new URL(request.url).origin;const xml=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${routes.map(path=>`<url><loc>${origin}${path}</loc></url>`).join("")}</urlset>`;return new Response(xml,{headers:{"content-type":"application/xml; charset=utf-8","cache-control":"public, max-age=3600"}})}
