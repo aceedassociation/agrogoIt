@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -19,7 +20,13 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DemoScreen } from "@/components/demo-screen";
-import { LocaleText } from "@/components/language-provider";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "IT Consulting & Digital Transformation Partner",
+  description: "Nearshore IT consulting, PMO, ERP/CRM implementation and custom software delivery for European organisations seeking clearer, more controlled operations.",
+  path: "/",
+});
 
 const problems = [
   { icon: FileStack, title: "Manual and repetitive operations", text: "Critical work depends on repeated data entry, paper forms and individual follow-up." },
@@ -29,13 +36,13 @@ const problems = [
 ];
 
 const solutions = [
-  { icon: PanelsTopLeft, title: "Web Platforms and Portals", text: "Customer, student, parent, supplier and service-request portals." },
-  { icon: Smartphone, title: "Mobile Applications", text: "Customer, member and field-team applications with notifications." },
-  { icon: ClipboardCheck, title: "Internal Management Systems", text: "Tasks, approvals, documents, inventory, projects, fees, HR and reporting." },
-  { icon: Database, title: "Dolibarr ERP/CRM", text: "CRM, sales, invoicing, stock, purchasing, projects, migration and support." },
-  { icon: LayoutDashboard, title: "Dashboards and Integrations", text: "Management dashboards, APIs, reporting, filters, alerts and exports." },
-  { icon: Bot, title: "AI and Automation", text: "Focused automation for documents, reporting, support and repetitive workflows." },
-  { icon: Route, title: "IT Consulting and PMO", text: "Requirements, governance, vendor selection, delivery monitoring and recovery." },
+  { icon: PanelsTopLeft, image: "/images/solutions/web-platform.png", title: "Web Platforms and Portals", text: "Secure digital spaces for customers, partners, suppliers and service users." },
+  { icon: Smartphone, image: "/images/solutions/mobile-app.png", title: "Mobile Applications", text: "Focused applications for customers, members and teams working in the field." },
+  { icon: ClipboardCheck, image: "/images/solutions/management-system.png", title: "Internal Management Systems", text: "Traceable tasks, approvals, documents, inventory, projects and reporting." },
+  { icon: Database, image: "/images/solutions/dolibarr-erp.png", title: "Dolibarr ERP/CRM", text: "CRM, sales, invoicing, stock, purchasing, projects, migration and support." },
+  { icon: LayoutDashboard, image: "/images/solutions/dashboard-integrations.png", title: "Dashboards and Integrations", text: "Connected data, APIs, reporting, filters, alerts and management visibility." },
+  { icon: Bot, image: "/images/solutions/ai-automation.png", title: "AI and Automation", text: "Practical automation for documents, reporting, support and repetitive workflows." },
+  { icon: Route, image: "/images/solutions/consulting-pmo.png", title: "IT Consulting and PMO", text: "Requirements, governance, vendor selection, delivery monitoring and recovery." },
 ];
 
 const process = [
@@ -82,14 +89,15 @@ const demoPreview = [
 function HeroVisual() {
   return (
     <div className="hero-visual" aria-label="Consulting and digital transformation visual">
-      <div className="hero-photo" role="img" aria-label="Business team planning a digital transformation" />
+      {/* eslint-disable-next-line @next/next/no-img-element -- this artwork is intentionally served as a local static hero asset. */}
+      <img className="hero-photo" src="/images/solutions/consulting-pmo.png" alt="Business team planning a digital transformation" />
       <div className="hero-visual-label">
-        <span className="status-dot" /> DIGITAL TRANSFORMATION
-        <span>Strategy · Governance · Delivery</span>
+        <span className="status-dot" /> OPERATING SYSTEMS
+        <span>Strategy · Delivery · Support</span>
       </div>
       <div className="hero-insight-card">
-        <div className="hero-insight-top"><span>Transformation focus</span><strong>Q1–Q4</strong></div>
-        <div className="hero-insight-title"><ChartNoAxesCombined size={16} /> Operating gap view</div>
+        <div className="hero-insight-top"><span>Transformation focus</span><strong>ACTIVE</strong></div>
+        <div className="hero-insight-title"><ChartNoAxesCombined size={16} /> Operating model view</div>
         <div className="hero-gap-bars">
           <div><span>Process</span><i><b /></i></div><div><span>Data</span><i><b /></i></div><div><span>Governance</span><i><b /></i></div>
         </div>
@@ -104,14 +112,14 @@ export default function Home() {
     <main id="main-content">
       <section className="hero section-shell">
         <div className="hero-copy">
-          <div className="eyebrow"><span /> <LocaleText id="hero.eyebrow">Digital Transformation & Software Solutions</LocaleText></div>
-          <h1><LocaleText id="hero.title.1">Turn fragmented work into</LocaleText> <em><LocaleText id="hero.title.2">useful digital systems.</LocaleText></em></h1>
-          <p className="hero-lead"><LocaleText id="hero.lead">Agrogo combines consulting, project management and software delivery to build web, mobile and management systems that work in real operations.</LocaleText></p>
+          <div className="eyebrow"><span /> IT CONSULTING · SOFTWARE DELIVERY</div>
+          <h1>Digital systems that <em>move business forward.</em></h1>
+          <p className="hero-lead">Agrogo brings together consulting, project management and software delivery to turn fragmented operations into systems your team can actually run.</p>
           <div className="button-row">
-            <Button asChild size="lg" className="button-primary"><Link href="/contact?project=diagnostic" data-analytics-event="book_diagnostic"><LocaleText id="cta.diagnostic">Book a Digital Diagnostic</LocaleText> <ArrowRight /></Link></Button>
-            <Button asChild size="lg" variant="outline" className="button-secondary"><Link href="/solutions"><LocaleText id="cta.exploreSolutions">Explore Our Solutions</LocaleText></Link></Button>
+            <Button asChild size="lg" className="button-primary"><Link href="/about?project=diagnostic#contact" data-analytics-event="book_diagnostic">Book a Digital Diagnostic <ArrowRight /></Link></Button>
+            <Button asChild size="lg" variant="outline" className="button-secondary"><Link href="/solutions">Explore Our Solutions</Link></Button>
           </div>
-          <div className="capability-line" aria-label="Capabilities"><LocaleText id="hero.capabilities">Consulting · Project Management · Software Delivery · Training · Support</LocaleText></div>
+          <div className="capability-line" aria-label="Capabilities"><span>Consulting</span><i /> <span>PMO</span><i /> <span>Software Delivery</span><i /> <span>Training</span><i /> <span>Support</span></div>
         </div>
         <HeroVisual />
       </section>
@@ -119,7 +127,7 @@ export default function Home() {
       <section className="problem-band section-pad">
         <div className="section-shell">
           <div className="section-heading split-heading">
-            <div><div className="eyebrow dark"><span /> The operational reality</div><h2>Technology should solve operational problems—not create new ones.</h2></div>
+            <div><div className="eyebrow dark"><span /> The operational reality</div><h2>Technology should solve operational problems, not create new ones.</h2></div>
             <p>Disconnected spreadsheets, paper, email, WhatsApp and isolated software create duplicated work, weak traceability, delays and poor visibility.</p>
           </div>
           <div className="problem-grid">
@@ -130,15 +138,22 @@ export default function Home() {
 
       <section className="consulting-home-section section-pad" id="consulting">
         <div className="section-shell consulting-home-grid">
-          <div className="consulting-home-copy"><div className="eyebrow light"><span /> <LocaleText id="home.consulting.label">Consulting</LocaleText></div><h2><LocaleText id="home.consulting.title">Start with the operating gap—not the tool.</LocaleText></h2><p><LocaleText id="home.consulting.text">We audit how the business works today, assess its governance and digital capability, then design the most credible path toward the operating model it wants to reach.</LocaleText></p><div className="consulting-home-metric"><span>0–5</span><div><strong>Capability maturity view</strong><small>Process · Data · Systems · Governance</small></div></div><Button asChild size="lg" className="button-white"><Link href="/consulting"><LocaleText id="home.consulting.action">Explore IT Consulting</LocaleText> <ArrowRight /></Link></Button></div>
+          <div className="consulting-home-copy"><div className="eyebrow light"><span /> Consulting</div><h2>Start with the operating gap, not the tool.</h2><p>We audit how the business works today, assess its governance and digital capability, then design the most credible path toward the operating model it wants to reach.</p><div className="consulting-home-metric"><span>0–5</span><div><strong>Capability maturity view</strong><small>Process · Data · Systems · Governance</small></div></div><Button asChild size="lg" className="button-white"><Link href="/consulting">Explore IT Consulting <ArrowRight /></Link></Button></div>
           <div className="consulting-highlight-list">{consultingHighlights.map(({ icon: Icon, title, text }, index) => <article key={title}><span>0{index + 1}</span><Icon /><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
         </div>
       </section>
 
       <section className="section-shell section-pad" id="solutions">
-        <div className="section-heading"><div className="eyebrow"><span /> <LocaleText id="home.solutions.label">Solutions</LocaleText></div><h2><LocaleText id="home.solutions.title">What We Build</LocaleText></h2><p><LocaleText id="home.solutions.text">Practical systems shaped around the workflow, users and decisions that matter to your organization.</LocaleText></p></div>
-        <div className="solutions-grid">
-          {solutions.map(({ icon: Icon, title, text }) => <article className="solution-card" key={title}><div className="icon-box"><Icon /></div><h3>{title}</h3><p>{text}</p><Link href="/solutions">Learn More <ArrowRight /></Link></article>)}
+        <div className="section-heading"><div className="eyebrow"><span /> Solutions</div><h2>What We Build</h2><p>Practical systems shaped around the workflow, users and decisions that matter to your organization.</p></div>
+        <div className="solutions-grid immersive-solutions-grid">
+          {solutions.map(({ icon: Icon, image, title, text }, index) => <article className="solution-card solution-card-image" key={title}>
+            <div className="solution-media">
+              {/* eslint-disable-next-line @next/next/no-img-element -- local 4K service artwork is rendered as static imagery. */}
+              <img src={image} alt={`Illustrative ${title.toLowerCase()} interface`} loading={index < 2 ? "eager" : "lazy"} />
+              <span>0{index + 1} · SYSTEM</span>
+            </div>
+            <div className="solution-content"><div className="icon-box"><Icon /></div><h3>{title}</h3><p>{text}</p><Link href="/solutions">Explore system <ArrowRight /></Link></div>
+          </article>)}
         </div>
       </section>
 
@@ -153,13 +168,13 @@ export default function Home() {
       </section>
 
       <section className="section-shell section-pad package-preview-section">
-        <div className="section-heading split-heading"><div><div className="eyebrow"><span /> Service packages</div><h2>Start with the right engagement</h2></div><p>Choose a controlled starting point based on the business problem and delivery risk—not a generic list of development hours.</p></div>
-        <div className="package-preview-grid">{packagePreview.map((item,i)=><article key={item.title}><span className="package-kicker">0{i+1}</span><h3>{item.title}</h3><dl><div><dt>Who it is for</dt><dd>{item.for}</dd></div><div><dt>Problem</dt><dd>{item.problem}</dd></div><div><dt>Main output</dt><dd>{item.deliverable}</dd></div></dl><Link href={`/contact?project=${encodeURIComponent(item.title)}`}>Request This Package <ArrowRight/></Link></article>)}</div>
+        <div className="section-heading split-heading"><div><div className="eyebrow"><span /> Service packages</div><h2>Start with the right engagement</h2></div><p>Choose a controlled starting point based on the business problem and delivery risk, not a generic list of development hours.</p></div>
+        <div className="package-preview-grid">{packagePreview.map((item,i)=><article key={item.title}><span className="package-kicker">0{i+1}</span><h3>{item.title}</h3><dl><div><dt>Who it is for</dt><dd>{item.for}</dd></div><div><dt>Problem</dt><dd>{item.problem}</dd></div><div><dt>Main output</dt><dd>{item.deliverable}</dd></div></dl><Link href={`/about?project=${encodeURIComponent(item.title)}#contact`}>Request This Package <ArrowRight/></Link></article>)}</div>
         <div className="center-action"><Button asChild variant="outline" size="lg" className="button-secondary"><Link href="/service-packages">Compare All Packages <ArrowRight/></Link></Button></div>
       </section>
 
       <section className="demo-preview-section section-pad">
-        <div className="section-shell"><div className="section-heading split-heading"><div><div className="eyebrow"><span /> Solution demonstrators</div><h2>See how the solutions work</h2></div><p>Illustrative environments for understanding the workflow and interface. These are clearly presented as demonstrators—not completed client projects.</p></div><div className="demo-preview-scroll">{demoPreview.map((item,i)=><article key={item.title}><div className="demo-preview-frame"><DemoScreen type={item.type}/></div><span className="demo-badge">DEMONSTRATOR · 0{i+1}</span><h3>{item.title}</h3><p>{item.purpose}</p><Link href={`/contact?project=${encodeURIComponent(item.title)}`}>Request a Demonstration <ArrowRight/></Link></article>)}</div><div className="center-action"><Button asChild variant="outline" size="lg" className="button-secondary"><Link href="/demonstrators">View All Demonstrators <ArrowRight/></Link></Button></div></div>
+        <div className="section-shell"><div className="section-heading split-heading"><div><div className="eyebrow"><span /> Solution demonstrators</div><h2>See how the solutions work</h2></div><p>Illustrative environments for understanding the workflow and interface. These are clearly presented as demonstrators, not completed client projects.</p></div><div className="demo-preview-scroll">{demoPreview.map((item,i)=><article key={item.title}><div className="demo-preview-frame"><DemoScreen type={item.type}/></div><span className="demo-badge">DEMONSTRATOR · 0{i+1}</span><h3>{item.title}</h3><p>{item.purpose}</p><Link href={`/about?project=${encodeURIComponent(item.title)}#contact`}>Request a Demonstration <ArrowRight/></Link></article>)}</div><div className="center-action"><Button asChild variant="outline" size="lg" className="button-secondary"><Link href="/methodology#demonstrators">Open Delivery Studio <ArrowRight/></Link></Button></div></div>
       </section>
 
       <section className="section-shell section-pad why-grid">
@@ -175,10 +190,10 @@ export default function Home() {
       </section>
 
       <section className="cta-section section-shell">
-        <div><div className="eyebrow light"><span /> Start with clarity</div><h2>Start with the business problem—not the software.</h2><p>Tell us what is slowing down your organization. Agrogo will help define the right workflow, system and implementation roadmap.</p></div>
+        <div><div className="eyebrow light"><span /> Start with clarity</div><h2>Start with the business problem, not the software.</h2><p>Tell us what is slowing down your organization. Agrogo will help define the right workflow, system and implementation roadmap.</p></div>
         <div className="button-row">
-          <Button asChild size="lg" className="button-white"><Link href="/contact?project=diagnostic">Book a Digital Diagnostic <ArrowRight /></Link></Button>
-          <Button asChild size="lg" variant="outline" className="button-on-dark"><Link href="/contact">Discuss Your Project</Link></Button>
+          <Button asChild size="lg" className="button-white"><Link href="/about?project=diagnostic#contact">Book a Digital Diagnostic <ArrowRight /></Link></Button>
+          <Button asChild size="lg" variant="outline" className="button-on-dark"><Link href="/about#contact">Discuss Your Project</Link></Button>
         </div>
       </section>
     </main>

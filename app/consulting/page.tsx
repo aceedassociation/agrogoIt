@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BarChart3, ClipboardCheck, Compass, Gauge, Network, Route, ShieldCheck, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FinalCta } from "@/components/final-cta";
 import { PageHero } from "@/components/page-hero";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Digital & IT Consulting",
-  description: "Agrogo diagnoses operations, assesses IT governance and turns the gap between today’s systems and target operating model into a practical transformation roadmap.",
-};
+export const metadata = createPageMetadata({
+  title: "IT Consulting & Digital Transformation Roadmaps",
+  description: "Digital and IT consulting for European organisations: operational diagnosis, COBIT-aligned governance review, transformation roadmaps and PMO delivery.",
+  path: "/consulting",
+});
 
 const diagnosticAreas = [
   { icon: Network, title: "Processes & workflows", text: "Trace how work, decisions, handoffs and approvals actually move across the organization." },
@@ -49,10 +50,10 @@ export default function ConsultingPage() {
           <div className="consulting-photo" role="img" aria-label="Business team reviewing a digital transformation plan" />
           <div>
             <div className="eyebrow"><span /> Start with evidence</div>
-            <h2>Digital transformation is a business change—not a software shopping list.</h2>
+            <h2>Digital transformation is a business change, not a software shopping list.</h2>
             <p>Agrogo works with leadership and operational teams to see the real operating model: where work slows down, where data disappears, who owns decisions and which systems add friction.</p>
-            <p>We then make the gap visible between the current situation and the business you want to run—so each investment in ERP/CRM, portals, data or automation has a clear purpose.</p>
-            <Button asChild size="lg" className="button-primary"><Link href="/contact?project=Digital%20Diagnostic">Book a Consulting Diagnostic <ArrowRight /></Link></Button>
+            <p>We then make the gap visible between the current situation and the business you want to run, so each investment in ERP/CRM, portals, data or automation has a clear purpose.</p>
+            <Button asChild size="lg" className="button-primary"><Link href="/about?project=Digital%20Diagnostic#contact">Book a Consulting Diagnostic <ArrowRight /></Link></Button>
           </div>
         </div>
       </section>
@@ -71,7 +72,7 @@ export default function ConsultingPage() {
 
       <section className="consulting-outputs section-pad">
         <div className="section-shell consulting-output-grid">
-          <div><div className="eyebrow light"><span /> What you receive</div><h2>A roadmap your leadership team can use.</h2><p>The work ends with practical priorities, accountable owners and an implementation sequence—not theory.</p><div className="consulting-output-icons"><Target /><Route /><Compass /></div></div>
+          <div><div className="eyebrow light"><span /> What you receive</div><h2>A roadmap your leadership team can use.</h2><p>The work ends with practical priorities, accountable owners and an implementation sequence, not theory.</p><div className="consulting-output-icons"><Target /><Route /><Compass /></div></div>
           <div className="consulting-output-list">{outputs.map(output => <div key={output}><ClipboardCheck /><span>{output}</span></div>)}</div>
         </div>
       </section>

@@ -1,9 +1,10 @@
 export const siteConfig = {
   name: "Agrogo IT Services",
   descriptor: "Digital Transformation & Software Solutions",
+  url: "https://www.agrogoit.com",
   location: "Casablanca, Morocco",
   email: "contact@agrogoit.com",
-  whatsapp: "+212633414884",
+  whatsapp: "+447782225704",
   mapUrl: "https://maps.app.goo.gl/XzSY8bhg2Ejn1JGq7",
   offices: [
     {

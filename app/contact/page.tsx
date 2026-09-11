@@ -1,9 +1,15 @@
-import type { Metadata } from "next";
-import { Suspense } from "react";
-import { Mail, MapPin, MessageSquareText, Phone, ShieldCheck } from "lucide-react";
-import { ContactForm } from "@/components/contact-form";
-import { PageHero } from "@/components/page-hero";
-import { siteConfig } from "@/lib/site-config";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title:"Contact", description:"Send Agrogo your digital transformation, software, Dolibarr, portal, mobile, dashboard, automation or IT PMO project brief." };
-export default function ContactPage(){return <main id="main-content"><PageHero eyebrow="Project inquiry" title={<>Tell us what is <em>slowing the operation down.</em></>} intro="Start with the challenge, current tools and desired outcome. We will review the situation and discuss the right next step." aside={<div className="contact-hero-points"><div><MessageSquareText/><span><strong>Business-first discussion</strong><small>No technical specification is required to begin.</small></span></div><div><ShieldCheck/><span><strong>Structured review</strong><small>Your brief helps us prepare a focused conversation.</small></span></div>{siteConfig.location?<div><MapPin/><span><strong>Morocco office</strong><small>{siteConfig.offices[0].address}</small></span></div>:null}{siteConfig.email?<div><Mail/><span><strong>Email</strong><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></span></div>:null}<div><Phone/><span><strong>Call us</strong>{siteConfig.offices.map(office=><a href={office.phoneHref} key={office.phoneHref}>{office.flag} {office.phone}</a>)}</span></div></div>}/><section className="contact-section section-pad"><div className="section-shell contact-grid"><div className="contact-intro"><div className="eyebrow"><span/>Send your project brief</div><h2>A useful first conversation starts with context.</h2><p>Fields marked with an asterisk are required. Your request is sent securely to the Agrogo team for review.</p><div className="contact-note"><strong>What happens next</strong><ol><li>We review your challenge and current tools.</li><li>We identify questions, risks and the likely engagement.</li><li>We contact you to discuss the next step.</li></ol></div></div><Suspense fallback={<div className="contact-form" aria-busy="true">Loading project form…</div>}><ContactForm/></Suspense></div></section></main>}
+export const metadata = createPageMetadata({
+  title: "Contact",
+  description: "Start a project conversation with Agrogo through the About Us contact form.",
+  path: "/contact",
+  noIndex: true,
+});
+
+export default function ContactPage() {
+  return <main id="main-content"><section className="page-hero section-shell"><div><div className="eyebrow"><span /> Contact</div><h1>Contact is now part of <em>About Us.</em></h1><p>Open About Us to learn about Agrogo and send your project brief in the same place.</p><Button asChild size="lg" className="button-primary"><Link href="/about#contact">Open About Us <ArrowRight /></Link></Button></div></section></main>;
+}

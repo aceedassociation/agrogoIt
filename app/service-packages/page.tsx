@@ -1,11 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { FinalCta } from "@/components/final-cta";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Service Packages", description: "Choose a structured Agrogo engagement for digital diagnosis, workflow pilots, portals, Dolibarr, mobile MVPs or ongoing support." };
+export const metadata = createPageMetadata({
+  title: "Digital Transformation, ERP/CRM & Software Delivery Packages",
+  description: "Structured engagements for digital diagnostics, workflow automation, customer portals, Dolibarr ERP/CRM, mobile MVPs and ongoing software support.",
+  path: "/service-packages",
+});
 
 const packages = [
   { title:"Digital Diagnostic", best:"Organizations unsure what to build, improve or prioritize.", problem:"Operational waste is visible, but the right digital response is not yet clear.", deliverables:["Stakeholder interviews","Current-process mapping","Problem and opportunity analysis","Prioritized requirements","Recommended solution","Implementation roadmap","Preliminary budget range"] },
@@ -16,4 +20,4 @@ const packages = [
   { title:"Support Retainer", best:"Clients needing reliable continuity after launch.", problem:"A deployed system needs monitoring, support and controlled improvement.", deliverables:["Monitoring and backups","Security and software updates","User support","Error resolution","Performance improvements","Small continuous enhancements","Periodic reporting"] },
 ];
 
-export default function PackagesPage(){return <main id="main-content"><PageHero eyebrow="Structured engagements" title={<>Start with the <em>right engagement.</em></>} intro="Each package has a clear problem, audience and delivery boundary. Scope and budget are defined after understanding your situation." aside={<><span className="aside-label">Pricing approach</span><strong>Scope before quotation.</strong><p>No fixed price is published because users, integrations, data and acceptance criteria change the real effort.</p></>}/><section className="section-shell section-pad"><div className="package-list">{packages.map((item,i)=><article className="package-detail" key={item.title}><div className="package-top"><span>0{i+1}</span><h2>{item.title}</h2></div><div className="package-columns"><div><h3>Best for</h3><p>{item.best}</p><h3>The problem it solves</h3><p>{item.problem}</p></div><div><h3>Main deliverables</h3><ul>{item.deliverables.map(x=><li key={x}><Check/>{x}</li>)}</ul></div></div><Button asChild className="button-primary"><Link href={`/contact?project=${encodeURIComponent(item.title)}`}>Request This Package <ArrowRight/></Link></Button></article>)}</div></section><FinalCta title="Not sure which package fits your situation?" text="Start with a Digital Diagnostic to clarify the process, priorities, solution and implementation roadmap."/></main>}
+export default function PackagesPage(){return <main id="main-content"><PageHero eyebrow="Structured engagements" title={<>Start with the <em>right engagement.</em></>} intro="Each package has a clear problem, audience and delivery boundary. Scope and budget are defined after understanding your situation." aside={<><span className="aside-label">Pricing approach</span><strong>Scope before quotation.</strong><p>No fixed price is published because users, integrations, data and acceptance criteria change the real effort.</p></>}/><section className="section-shell section-pad"><div className="package-list">{packages.map((item,i)=><article className="package-detail" key={item.title}><div className="package-top"><span>0{i+1}</span><h2>{item.title}</h2></div><div className="package-columns"><div><h3>Best for</h3><p>{item.best}</p><h3>The problem it solves</h3><p>{item.problem}</p></div><div><h3>Main deliverables</h3><ul>{item.deliverables.map(x=><li key={x}><Check/>{x}</li>)}</ul></div></div><Button asChild className="button-primary"><Link href={`/about?project=${encodeURIComponent(item.title)}#contact`}>Request This Package <ArrowRight/></Link></Button></article>)}</div></section><FinalCta title="Not sure which package fits your situation?" text="Start with a Digital Diagnostic to clarify the process, priorities, solution and implementation roadmap."/></main>}

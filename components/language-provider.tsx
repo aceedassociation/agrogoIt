@@ -8,7 +8,7 @@ const storageKey = "agrogo-site-locale";
 const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
   fr: {
     "language.label": "Langue",
-    "nav.home": "Accueil", "nav.consulting": "Conseil", "nav.solutions": "Solutions", "nav.packages": "Offres", "nav.methodology": "Méthodologie", "nav.demonstrators": "Démonstrateurs", "nav.about": "À propos", "nav.contact": "Contact",
+    "nav.home": "Accueil", "nav.consulting": "Conseil", "nav.solutions": "Solutions", "nav.packages": "Offres", "nav.methodology": "Méthodologie", "nav.demonstrators": "Démonstrateurs", "nav.about": "À propos", "nav.contact": "Contact", "nav.deliveryStudio": "Studio de livraison", "nav.aboutUs": "À propos de nous",
     "cta.diagnostic": "Réserver un diagnostic digital", "cta.discuss": "Parler de votre projet", "cta.exploreSolutions": "Découvrir nos solutions",
     "footer.company": "Entreprise", "footer.solutions": "Solutions", "footer.start": "Démarrer une conversation", "footer.description": "Définissez le problème, l'écart opérationnel et la prochaine étape pertinente.", "footer.brand": "Clarté métier, transformation maîtrisée et livraison digitale concrète.", "footer.project": "Parler de votre projet", "footer.privacy": "Politique de confidentialité", "footer.terms": "Conditions d’utilisation", "footer.cookies": "Préférences cookies", "footer.rights": "Tous droits réservés.",
     "cookie.title": "Votre vie privée, votre choix", "cookie.text": "Nous utilisons uniquement les technologies essentielles au fonctionnement du site. Aucun cookie d’analyse ou de publicité n’est activé sans votre accord.", "cookie.link": "Lire notre avis sur les cookies", "cookie.essential": "Essentiels uniquement", "cookie.accept": "Accepter et continuer",
@@ -21,7 +21,7 @@ const translations: Record<Exclude<Locale, "en">, Record<string, string>> = {
   },
   ar: {
     "language.label": "اللغة",
-    "nav.home": "الرئيسية", "nav.consulting": "الاستشارات", "nav.solutions": "الحلول", "nav.packages": "الباقات", "nav.methodology": "المنهجية", "nav.demonstrators": "نماذج العرض", "nav.about": "من نحن", "nav.contact": "تواصل معنا",
+    "nav.home": "الرئيسية", "nav.consulting": "الاستشارات", "nav.solutions": "الحلول", "nav.packages": "الباقات", "nav.methodology": "المنهجية", "nav.demonstrators": "نماذج العرض", "nav.about": "من نحن", "nav.contact": "تواصل معنا", "nav.deliveryStudio": "استوديو التنفيذ", "nav.aboutUs": "من نحن",
     "cta.diagnostic": "احجز تشخيصاً رقمياً", "cta.discuss": "ناقش مشروعك", "cta.exploreSolutions": "اكتشف حلولنا",
     "footer.company": "الشركة", "footer.solutions": "الحلول", "footer.start": "ابدأ محادثة", "footer.description": "حدّد المشكلة والفجوة التشغيلية والخطوة المناسبة التالية.", "footer.brand": "وضوح في الأعمال، تحول مضبوط، وتنفيذ رقمي عملي.", "footer.project": "ناقش مشروعك", "footer.privacy": "سياسة الخصوصية", "footer.terms": "شروط الاستخدام", "footer.cookies": "إعدادات ملفات الارتباط", "footer.rights": "جميع الحقوق محفوظة.",
     "cookie.title": "خصوصيتك، اختيارك", "cookie.text": "نستخدم التقنيات الأساسية فقط لتشغيل هذا الموقع. لا نفعّل ملفات تحليلية أو إعلانية دون موافقتك.", "cookie.link": "اطّلع على إشعار ملفات الارتباط", "cookie.essential": "الأساسية فقط", "cookie.accept": "موافقة ومتابعة",
